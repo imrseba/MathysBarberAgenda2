@@ -45,7 +45,6 @@ export const UserPage = () => {
       return;
     }
 
-    // Display confirmation dialog with the appointment details
     const confirmationMessage = `
       Detalles de la cita:
       - Corte: ${cut}
