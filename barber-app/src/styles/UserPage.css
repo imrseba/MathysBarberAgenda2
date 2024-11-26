@@ -1,0 +1,64 @@
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+  }
+  
+
+  .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 300px;
+  }
+  
+  select, input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #36d7b7;
+    color: white;
+    cursor: pointer;
+    border: none;
+  }
+  
+  button:hover {
+    background-color: hwb(180 94% 2%);
+  }
+  
+  .Toastify__toast--success {
+    background-color: hsl(180, 26%, 96%);
+  }
+  
+  .Toastify__toast--error {
+    background-color: #ece9e9;
+    color: red;
+  }
+  

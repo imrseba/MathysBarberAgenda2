@@ -1,0 +1,9 @@
+.page-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    position: relative; 
+    flex-direction: column;
+  }
