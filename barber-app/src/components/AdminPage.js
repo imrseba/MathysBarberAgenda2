@@ -5,10 +5,12 @@ import { db } from '../firebaseConfig';
 import { MoonLoader } from 'react-spinners';
 import '../styles/AdminPage.css';
 import { jsPDF } from 'jspdf';
+import { useNavigate } from 'react-router-dom';
 
 export const AdminPage = () => {
   const [loading, setLoading] = useState(false);
   const date = useState(new Date().toISOString().split('T')[0]);
+  const navigate = useNavigate();
 
   const handleGeneratePDF = async () => {
     const isConfirmed = window.confirm('¿Estás seguro de que quieres ver la semana y generar el PDF?');
@@ -136,6 +138,10 @@ export const AdminPage = () => {
     }
   };
 
+  const handleGenerateAvance = async () => {
+    navigate ('/admin/avance');
+  }
+
   return (
     <div className='page-container'>
       {loading && (
@@ -143,7 +149,8 @@ export const AdminPage = () => {
           <MoonLoader size={60} color="#36d7b7" />
         </div>
       )}
-      <button onClick={handleGeneratePDF}>Ver Semana</button>
+      <button onClick={handleGeneratePDF}>Terminar Semana</button>
+      <button onClick={handleGenerateAvance}>Ver Avanze</button>
       <UserPage />
     </div>
   );
