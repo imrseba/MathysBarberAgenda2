@@ -27,7 +27,7 @@ export const UserPage = () => {
     'Teñido(Visos)': 30000,
     'Teñido(Global)':40000,
     'Linea': 2000,
-    'diseño': 4000,
+    'Diseño': 4000,
   };
 
   const handleCutChange = (e) => {
@@ -97,8 +97,11 @@ export const UserPage = () => {
         <select value={extra} onChange={handleExtraChange}>
           <option value="" disabled>Extras</option>
           <option value="Ceja">Ceja</option>
-          <option value="Barba">Linea</option>
-          <option value="Teñido">Teñido</option>
+          <option value="Barba">Barba</option>
+          <option value="Linea">Linea</option>
+          <option value="Diseño">Diseño</option>
+          <option value="Teñido(Visos)">Teñido Visos</option>
+          <option value="Teñido(Completo)">Teñido Completo</option>
         </select>
         <button onClick={handleSubmit}>Guardar Cita</button>
       </div>
