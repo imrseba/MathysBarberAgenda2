@@ -101,7 +101,7 @@ export const UserPage = () => {
           <option value="Linea">Linea</option>
           <option value="Diseño">Diseño</option>
           <option value="Teñido(Visos)">Teñido Visos</option>
-          <option value="Teñido(Completo)">Teñido Completo</option>
+          <option value="Teñido(Global)">Teñido Global</option>
         </select>
         <button onClick={handleSubmit}>Guardar Cita</button>
       </div>

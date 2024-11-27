@@ -97,6 +97,7 @@ export const AdminPage = () => {
 
             pdfDoc.text(extraPriceText, extraPriceTextX, yPosition);
           }
+          pdfDoc.text('---------------------------------------', 80, yPosition + 5);
         });
 
         const totalText = `Total: ${emailData.total}`;
