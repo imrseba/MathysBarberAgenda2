@@ -18,13 +18,16 @@ export const UserPage = () => {
 
   const cutPrices = {
     'Corte': 8000,
-    'Corte + Barba': 10000,
+    'Corte + Barba': 12000,
   };
 
   const extraPrices = {
     'Ceja': 2000,
-    'Barba': 3000,
-    'Teñido': 4000,
+    'Barba': 5000,
+    'Teñido(Visos)': 30000,
+    'Teñido(Global)':40000,
+    'Linea': 2000,
+    'diseño': 4000,
   };
 
   const handleCutChange = (e) => {
