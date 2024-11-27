@@ -19,7 +19,7 @@ export const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       if(user){
-        if(user.email === 'seba@gmail.com'){
+        if(user.email === 'matia@gmail.com'){
           localStorage.setItem('userEmail', user.email);
           navigate('/admin');
           setLoading(false);
