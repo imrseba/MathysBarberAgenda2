@@ -6,6 +6,7 @@ import { MoonLoader } from 'react-spinners';
 import '../styles/UserPage.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 export const UserPage = () => {
   const [cut, setCut] = useState('');
@@ -15,6 +16,7 @@ export const UserPage = () => {
   const [extraPrice, setExtraPrice] = useState(0);
   const [loading, setLoading] = useState(false);
   const userEmail = localStorage.getItem('userEmail');
+  const navigate = useNavigate();
 
   const cutPrices = {
     'Corte': 8000,
@@ -79,6 +81,10 @@ export const UserPage = () => {
     }
   };
 
+  const handleGenerateAvance = async () => {
+    navigate ('/admin/avance');
+  }
+
   return (
     <div className="page-container">
       {loading && (
@@ -104,6 +110,7 @@ export const UserPage = () => {
           <option value="Teñido(Global)">Teñido Global</option>
         </select>
         <button onClick={handleSubmit}>Guardar Cita</button>
+        <button onClick={handleGenerateAvance}>Ver Avanze</button>
       </div>
       <ToastContainer />
     </div>
