@@ -97,6 +97,14 @@ export const AdminPage = () => {
 
             pdfDoc.text(extraPriceText, extraPriceTextX, yPosition);
           }
+
+          if(!appointment.extraPrice && !appointment.extra){
+            const extraText = `No tiene ningun extra agregado este corte`;
+            const extraPriceTextWidth = pdfDoc.getStringUnitWidth(extraText) * pdfDoc.internal.getFontSize() / pdfDoc.internal.scaleFactor;
+            const extraPriceTextX = (pageWidth - extraPriceTextWidth) / 2;
+            yPosition += 5;
+            pdfDoc.text(extraText, extraPriceTextX, yPosition);
+          }
           pdfDoc.text('---------------------------------------', 80, yPosition + 5);
         });
 

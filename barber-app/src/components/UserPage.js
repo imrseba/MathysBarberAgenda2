@@ -43,7 +43,7 @@ export const UserPage = () => {
   };
 
   const handleSubmit = async () => {
-    if (!cut || !date || !extra) {
+    if (!cut || !date) {
       toast.error('Por favor complete todos los campos.');
       return;
     }
@@ -95,7 +95,7 @@ export const UserPage = () => {
         </select>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         <select value={extra} onChange={handleExtraChange}>
-          <option value="" disabled>Extras</option>
+          <option value="" >Ninguno</option>
           <option value="Ceja">Ceja</option>
           <option value="Barba">Barba</option>
           <option value="Linea">Linea</option>
