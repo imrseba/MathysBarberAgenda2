@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "LogoBarber192.png",
+      "src": "LogoBarber192.jpeg",
       "type": "image/jpeg",
       "sizes": "192x192"
     },
     {
-      "src": "LogoBarber512.png",
+      "src": "LogoBarber512.jpeg",
       "type": "image/jpeg",
       "sizes": "512x512"
     }
