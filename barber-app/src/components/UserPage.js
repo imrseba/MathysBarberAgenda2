@@ -14,6 +14,7 @@ export const UserPage = () => {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [extra, setExtra] = useState('');
   const [extraPrice, setExtraPrice] = useState(0);
+  const [typePay, setTypePay] = useState('Efectivo'); 
   const [loading, setLoading] = useState(false);
   const userEmail = localStorage.getItem('userEmail');
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export const UserPage = () => {
     'Ceja': 2000,
     'Barba': 5000,
     'Teñido(Visos)': 30000,
-    'Teñido(Global)':40000,
+    'Teñido(Global)': 40000,
     'Linea': 2000,
     'Diseño': 4000,
   };
@@ -44,6 +45,10 @@ export const UserPage = () => {
     setExtraPrice(extraPrices[selectedExtra] || 0);
   };
 
+  const handleTypePayChange = (e) => {
+    setTypePay(e.target.value); 
+  };
+
   const handleSubmit = async () => {
     if (!cut || !date) {
       toast.error('Por favor complete todos los campos.');
@@ -57,6 +62,7 @@ export const UserPage = () => {
       - Fecha: ${date}
       - Extra: ${extra}
       - Precio extra: ${extraPrice}
+      - Tipo de pago: ${typePay}
     `;
     const isConfirmed = window.confirm(`¿Estás seguro de que quieres guardar la cita?\n\n${confirmationMessage}`);
 
@@ -70,6 +76,7 @@ export const UserPage = () => {
           extra,
           extraPrice,
           userEmail,
+          typePay, 
           createdAt: new Date(),
         });
         toast.success('¡Cita registrada con éxito!');
@@ -82,8 +89,8 @@ export const UserPage = () => {
   };
 
   const handleGenerateAvance = async () => {
-    navigate ('/admin/avance');
-  }
+    navigate('/user/avance');
+  };
 
   return (
     <div className="page-container">
@@ -101,13 +108,17 @@ export const UserPage = () => {
         </select>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         <select value={extra} onChange={handleExtraChange}>
-          <option value="" >Ninguno</option>
+          <option value="">Ninguno</option>
           <option value="Ceja">Ceja</option>
           <option value="Barba">Barba</option>
           <option value="Linea">Linea</option>
           <option value="Diseño">Diseño</option>
           <option value="Teñido(Visos)">Teñido Visos</option>
           <option value="Teñido(Global)">Teñido Global</option>
+        </select>
+        <select value={typePay} onChange={handleTypePayChange}>
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia">Transferencia</option>
         </select>
         <button onClick={handleSubmit}>Guardar Cita</button>
         <button onClick={handleGenerateAvance}>Ver Avanze</button>
