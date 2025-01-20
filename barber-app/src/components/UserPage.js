@@ -20,12 +20,12 @@ export const UserPage = () => {
   const navigate = useNavigate();
 
   const cutPrices = {
-    'Corte': 8000,
-    'Corte + Barba': 12000,
+    'Corte': 10000,
+    'Corte + Barba': 14000,
   };
 
   const extraPrices = {
-    'Ceja': 2000,
+    'Ceja': 1000,
     'Barba': 5000,
     'Teñido(Visos)': 30000,
     'Teñido(Global)': 40000,
