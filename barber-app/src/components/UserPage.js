@@ -119,6 +119,7 @@ export const UserPage = () => {
         <select value={typePay} onChange={handleTypePayChange}>
           <option value="Efectivo">Efectivo</option>
           <option value="Transferencia">Transferencia</option>
+          <option value="Debito">Debito</option>
         </select>
         <button onClick={handleSubmit}>Guardar Cita</button>
         <button onClick={handleGenerateAvance}>Ver Avanze</button>

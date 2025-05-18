@@ -79,7 +79,15 @@ export const AdminAvance = () => {
               const totalTransferenciaExtras = citas
                 .filter(cita => cita.typePay === 'Transferencia')
                 .reduce((acc, cita) => acc + (parseInt(cita.extraPrice) || 0), 0);
+              
+              const totalDebitoCortes = citas
+              .filter(cita => cita.typePay === 'Débito')
+              .reduce((acc, cita) => acc + (parseInt(cita.cutPrice) || 0), 0);
 
+              const totalDebitoExtras = citas
+              .filter(cita => cita.typePay === 'Débito')
+              .reduce((acc, cita) => acc + (parseInt(cita.extraPrice) || 0), 0);
+              
               return (
                 <React.Fragment key={correo}>
                   {citas.map(cita => (
@@ -95,16 +103,16 @@ export const AdminAvance = () => {
                   <tr className="total-row">
                     <td colSpan="3">Total para {correo.split('@')[0]}</td>
                     <td>
-                      E: {totalEfectivoCortes}, T: {totalTransferenciaCortes}
+                      E: {totalEfectivoCortes}, T: {totalTransferenciaCortes}, D: {totalDebitoCortes}
                     </td>
                     <td colSpan="2">
-                      E: {totalEfectivoExtras}, T: {totalTransferenciaExtras}
+                      E: {totalEfectivoExtras}, T: {totalTransferenciaExtras}, D: {totalDebitoExtras}
                     </td>
                   </tr>
                   <tr className="total-row">
                     <td colSpan="3">Total Final {correo.split('@')[0]}</td>
-                    <td>
-                      E: {totalEfectivoCortes+totalEfectivoExtras}, T: {totalTransferenciaCortes+totalTransferenciaExtras}
+                    <td colSpan="3">
+                      E: {totalEfectivoCortes + totalEfectivoExtras}, T: {totalTransferenciaCortes + totalTransferenciaExtras}, D: {totalDebitoCortes + totalDebitoExtras}
                     </td>
                   </tr>
                 </React.Fragment>

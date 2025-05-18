@@ -9,9 +9,9 @@ export const UserAvance = () => {
   const [loading, setLoading] = useState(false);
   const [citas, setCitas] = useState([]);
   const navigate = useNavigate();
-  const userEmail = localStorage.getItem('userEmail'); // Obtén el correo del usuario desde localStorage
+  const userEmail = localStorage.getItem('userEmail');
   const userName = userEmail ? userEmail.split('@')[0] : '';
-  
+
   const fetchCitas = useCallback(async () => {
     setLoading(true);
     try {
@@ -21,7 +21,7 @@ export const UserAvance = () => {
           id: doc.id,
           ...doc.data(),
         }))
-        .filter(cita => cita.userEmail === userEmail); // Filtrar por correo del usuario
+        .filter(cita => cita.userEmail === userEmail);
 
       const sortedCitas = citasData.sort((a, b) => a.date.localeCompare(b.date));
       setCitas(sortedCitas);
@@ -30,27 +30,24 @@ export const UserAvance = () => {
     } finally {
       setLoading(false);
     }
-  }, [userEmail]); // Add userEmail as a dependency, since it can change
+  }, [userEmail]);
 
   useEffect(() => {
     fetchCitas();
-  }, [fetchCitas]); // Now that fetchCitas is memoized, it can safely be used in the dependencies array
+  }, [fetchCitas]);
 
-  const totalEfectivoCortes = citas
-    .filter(cita => cita.typePay === 'Efectivo')
-    .reduce((acc, cita) => acc + (parseInt(cita.cutPrice) || 0), 0);
+  const calculateTotal = (type, field) =>
+    citas
+      .filter(cita => cita.typePay === type)
+      .reduce((acc, cita) => acc + (parseInt(cita[field]) || 0), 0);
 
-  const totalTransferenciaCortes = citas
-    .filter(cita => cita.typePay === 'Transferencia')
-    .reduce((acc, cita) => acc + (parseInt(cita.cutPrice) || 0), 0);
+  const totalEfectivoCortes = calculateTotal('Efectivo', 'cutPrice');
+  const totalTransferenciaCortes = calculateTotal('Transferencia', 'cutPrice');
+  const totalDebitoCortes = calculateTotal('Débito', 'cutPrice');
 
-  const totalEfectivoExtras = citas
-    .filter(cita => cita.typePay === 'Efectivo')
-    .reduce((acc, cita) => acc + (parseInt(cita.extraPrice) || 0), 0);
-
-  const totalTransferenciaExtras = citas
-    .filter(cita => cita.typePay === 'Transferencia')
-    .reduce((acc, cita) => acc + (parseInt(cita.extraPrice) || 0), 0);
+  const totalEfectivoExtras = calculateTotal('Efectivo', 'extraPrice');
+  const totalTransferenciaExtras = calculateTotal('Transferencia', 'extraPrice');
+  const totalDebitoExtras = calculateTotal('Débito', 'extraPrice');
 
   return (
     <div>
@@ -86,18 +83,18 @@ export const UserAvance = () => {
               </tr>
             ))}
             <tr className="total-row">
-              <td colSpan="3">Total extra separado</td>
+              <td colSpan="3">Total separado</td>
               <td>
-                E: {totalEfectivoCortes}, T: {totalTransferenciaCortes}
+                E: {totalEfectivoCortes}, T: {totalTransferenciaCortes}, D: {totalDebitoCortes}
               </td>
               <td colSpan="2">
-                E: {totalEfectivoExtras}, T: {totalTransferenciaExtras}
+                E: {totalEfectivoExtras}, T: {totalTransferenciaExtras}, D: {totalDebitoExtras}
               </td>
             </tr>
             <tr className="total-row">
               <td colSpan="3">Total Final</td>
               <td>
-                E: {totalEfectivoCortes+totalEfectivoExtras}, T: {totalTransferenciaCortes+totalTransferenciaExtras}
+                E: {totalEfectivoCortes + totalEfectivoExtras}, T: {totalTransferenciaCortes + totalTransferenciaExtras}, D: {totalDebitoCortes + totalDebitoExtras}
               </td>
             </tr>
           </tbody>
