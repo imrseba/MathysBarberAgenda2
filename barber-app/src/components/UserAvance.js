@@ -43,11 +43,11 @@ export const UserAvance = () => {
 
   const totalEfectivoCortes = calculateTotal('Efectivo', 'cutPrice');
   const totalTransferenciaCortes = calculateTotal('Transferencia', 'cutPrice');
-  const totalDebitoCortes = calculateTotal('Débito', 'cutPrice');
+  const totalDebitoCortes = calculateTotal('Debito', 'cutPrice');
 
   const totalEfectivoExtras = calculateTotal('Efectivo', 'extraPrice');
   const totalTransferenciaExtras = calculateTotal('Transferencia', 'extraPrice');
-  const totalDebitoExtras = calculateTotal('Débito', 'extraPrice');
+  const totalDebitoExtras = calculateTotal('Debito', 'extraPrice');
 
   return (
     <div>

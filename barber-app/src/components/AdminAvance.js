@@ -81,11 +81,11 @@ export const AdminAvance = () => {
                 .reduce((acc, cita) => acc + (parseInt(cita.extraPrice) || 0), 0);
               
               const totalDebitoCortes = citas
-              .filter(cita => cita.typePay === 'Débito')
+              .filter(cita => cita.typePay === 'Debito')
               .reduce((acc, cita) => acc + (parseInt(cita.cutPrice) || 0), 0);
 
               const totalDebitoExtras = citas
-              .filter(cita => cita.typePay === 'Débito')
+              .filter(cita => cita.typePay === 'Debito')
               .reduce((acc, cita) => acc + (parseInt(cita.extraPrice) || 0), 0);
               
               return (
